@@ -1,30 +1,38 @@
 var http = require('http')
 
-var config = require('./config')
 var path = require('path')
 var fs = require('fs')
 
+var mimeMap = {
+    'jpg': 'image/jpg',
+    'gif': 'image/gif',
+    'css': 'text/css',
+    'js': 'application/javascript',
+    'html': 'text/html'
+}
+
 http.createServer(function (req, res) {
 
-    res.writeHead(200, {'Content-Type': 'text/plain'})
-    res.end('Hello World\n')
+    var fileName = req.url.replace(/\?.*$/, '')
 
-    var url = req.url.replace(/\?.+$/, '')
-    var qs = req.url.substring(req.url.indexOf('?') + 1)
+    if (fileName === '/') {
+        fileName = './static/index.html'
+    } else {
+        fileName = path.join(__dirname, './static', fileName)
+    }
 
-    console.log(url)
-    console.log(qs)
-
-    var mainFile = path.join(config.dirname, url)
-
-    fs.lstat(mainFile, function (err, stat) {
+    fs.lstat(fileName, function (err, stat) {
 
         if (err) {
-            console.log(err, mainFile)
+            res.end()
             return
         }
-        //if directory
-        console.log(stat.isDirectory())
+
+        if (stat.isFile()) {
+            fs.createReadStream(fileName).pipe(res);
+        } else {
+            res.end()
+        }
 
     })
 
