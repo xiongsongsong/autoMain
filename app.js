@@ -11,6 +11,10 @@ var mimeMap = {
     'html': 'text/html'
 }
 
+var routes = {
+    '/start-build': require
+}
+
 http.createServer(function (req, res) {
 
     var fileName = req.url.replace(/\?.*$/, '')
@@ -21,13 +25,14 @@ http.createServer(function (req, res) {
         fileName = path.join(__dirname, './static', fileName)
     }
 
-    fs.lstat(fileName, function (err, stat) {
+    var extName = path.extname(fileName).substring(1)
+    res.writeHead(200, {'Content-Type': mimeMap[extName.toLowerCase()] ? mimeMap[extName.toLowerCase()] : 'object/stream'});
 
+    fs.lstat(fileName, function (err, stat) {
         if (err) {
             res.end()
             return
         }
-
         if (stat.isFile()) {
             fs.createReadStream(fileName).pipe(res);
         } else {
@@ -37,4 +42,3 @@ http.createServer(function (req, res) {
     })
 
 }).listen(3000)
-

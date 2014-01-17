@@ -3,9 +3,21 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="./assets/reset.css"/>
+    <script src="./assets/jquery-2.0.3.min.js"></script>
 </head>
 <body>
 <h1>静态资源打包</h1>
-<input type="text" placeholder="请输入目录根路径"/>
+<input type="text" placeholder="请输入目录根路径" value="D:\autoMain\test\home\init.js" maxlength="150" style="width: 500px;"/>
+<input type="button" id="go" value="开始分析"/>
+<script>
+    $(function () {
+        $('#go').on('click', function (ev) {
+            $.ajax({
+                url: '/start-build.json',
+                dataType:'json'
+            })
+        })
+    })
+</script>
 </body>
 </html>
