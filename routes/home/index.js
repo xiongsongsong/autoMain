@@ -1,19 +1,9 @@
 var app = require('app')
 var path = require('path')
-var fs = require('fs')
+var build = require('build')
 
 app.use(function *() {
     this.fileName = path.join(__baseDirname, this.request.path)
-    if (yield isFile) {
-        this.type = path.extname(this.fileName)
-        this.body = fs.createReadStream(this.fileName)
-    } else {
-        this.body = 'Not Found'
-    }
+    this.type = path.extname(this.fileName)
+    this.body = yield build.start
 });
-
-function isFile(callback) {
-    fs.lstat(this.fileName, function (err, stat) {
-        callback(null, stat && stat.isFile())
-    })
-}
