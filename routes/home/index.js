@@ -7,6 +7,7 @@ app.use(function *() {
     this.dirName = __baseDirname
     this.filePath = path.join(this.dirName, this.fileName)
     this.moduleCache = {}
+    this.requireMap = {}
 
     this.body = yield build.start
 });
