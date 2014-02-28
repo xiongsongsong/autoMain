@@ -1,5 +1,2 @@
-define(function (require, exports, module) {
+console.log('content')
 
-    console.log('content')
-
-})
