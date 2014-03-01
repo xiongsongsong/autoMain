@@ -1,6 +1,4 @@
-var b = require('./content/index')
-var e = require('./header/index')
-var c = require('./body/index');
+
 
 exports.foo = 'bar'
 
