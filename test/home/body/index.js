@@ -1,1 +1,3 @@
-console.log('body-index')
+
+    require('./a/a-1')
+
