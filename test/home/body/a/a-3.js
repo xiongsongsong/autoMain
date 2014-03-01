@@ -1,2 +1,3 @@
-console.log('a-3')
+console.log(module.id)
+
 require('./../a-4')

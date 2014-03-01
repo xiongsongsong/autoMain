@@ -1,1 +1,1 @@
-console.log('content')
+console.log(module.id)

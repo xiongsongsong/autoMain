@@ -1,3 +1,3 @@
-
-    require('./a/a-1')
+console.log(module.id)
+require('./a/a-1')
 

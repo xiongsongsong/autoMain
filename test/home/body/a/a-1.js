@@ -1,4 +1,4 @@
-console.log('body a-1')
+console.log(module.id)
 
 require('./a-2')
 

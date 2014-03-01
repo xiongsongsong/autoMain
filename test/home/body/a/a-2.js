@@ -1,6 +1,5 @@
 
-console.log('a-2')
-
+console.log(module.id)
 
 require('a-3')
 

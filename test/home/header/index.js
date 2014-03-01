@@ -1,7 +1,3 @@
-console.log('header loading')
+console.log(module.id)
 
-document.title = Math.random();
-
-var a = require('./../content/index')
-
-console.log(a)
+require('./../content/index')
