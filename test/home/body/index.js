@@ -1,5 +1,1 @@
-
-    console.log('body')
-
-    require('./a/a-1')
-
+console.log('body-index')

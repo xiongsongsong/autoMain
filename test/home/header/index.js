@@ -1,3 +1,7 @@
+console.log('header loading')
 
-    console.log('header')
+document.title = Math.random();
 
+var a = require('./../content/index')
+
+console.log(a)
