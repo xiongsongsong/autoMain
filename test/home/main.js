@@ -1,7 +1,4 @@
-/**
- * Created by xiongsongsong on 14-1-5.
- */
-
-require('./body/index')
-require('./content/index')
-require('./header/index')
+var a = 123
+var c = require('./body/index'), e = 88;
+var b = require('./content/index')
+var c = require('./header/index')
