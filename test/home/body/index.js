@@ -1,3 +1,3 @@
-console.log(module.id)
-require('./a/a-1.js')
+if((require('./a/a-1.js'), require('./a/a-1'))) {
 
+}

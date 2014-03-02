@@ -5,3 +5,5 @@ var c = require('./body/index');
 exports.foo = 'bar'
 
 console.log('main:', module.id)
+
+exports.foo2 = 'bar2'
