@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>seaJS自动打包工具</title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+<div class="container">
+    <h1>配置</h1>
+
+    <form class="form-horizontal" id="setting" role="form" action="/test/test.do" method="post" data-send-type="ajax">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Base</label>
+
+            <div class="col-sm-7">
+                <input type="text" id="base" name="base" class="form-control"
+                       placeholder="http://example.cdn.cn/assets" value="http://localhost:8000/"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">脚本根目录</label>
+
+            <div class="col-sm-7">
+                <input type="text" id="root" name="root" class="form-control" value="/Users/xiongsongsong/WebstormProjects/autoMain"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">入口文件</label>
+
+            <div class="col-sm-7">
+                <textarea class="form-control" id="output" placeholder="拷贝此处代码"></textarea>
+            </div>
+        </div>
+    </form>
+    <sub>请使用IE9或其他浏览器及其以上访问本页面</sub>
+</div>
+<script src="http://assets.spmjs.org/??seajs/seajs/2.1.1/sea.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $('#root,#base').on('input', function (ev) {
+        $.ajax({
+            url: '/',
+            type: 'get',
+            data: $('#setting').serializeArray()
+        }).done(function (url) {
+                    $('#output').val(JSON.stringify(url))
+                }
+        )
+    })
+    $('#root').trigger('input')
+</script>
+</body>
+</html>
