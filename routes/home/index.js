@@ -7,15 +7,26 @@ app.use(function *() {
 
         var isAjax = this.header['x-requested-with'] !== undefined
 
+
+        //check home page
         if (this.request.path === '/' && !isAjax) {
             this.type = 'html'
             this.body = fs.createReadStream(path.join(__dirname, 'index.html'))
             return
         }
 
-        if (this.query.base || this.query.root) {
-            global.baseDirname = this.query.root
-            global.rootUrl = this.query.base ? this.query.base : global.__baseDirname
+
+        //ls
+        if (this.query.ls) {
+            this.type = 'json'
+            this.body = yield build.readDir
+            return
+        }
+
+
+        if (this.query.dir || this.query.url) {
+            global.baseUrl = this.query.url
+            global.baseDir = this.query.dir ? this.query.dir : global.__baseDirname
 
             if (isAjax) {
                 this.type = 'json'
@@ -24,15 +35,15 @@ app.use(function *() {
             }
         }
 
-        if (!global.baseDirname || !global.rootUrl) {
+        if (!global.baseUrl || !global.baseDir) {
             this.type = 'json'
             this.body = {err: 'Please complete the setup.'}
             return
         }
 
         this.fileName = this.request.path
-        this.dirName = global.baseDirname
-        this.rootUrl = global.rootUrl
+        this.dirName = global.baseDir
+        this.rootUrl = global.baseUrl
         this.rootProtocol = this.rootUrl.substring(0, this.rootUrl.indexOf('//') + 2)
         this.filePath = path.join(this.dirName, this.fileName)
         this.filePath = this.filePath + ( path.extname(this.filePath) === '' ? '.js' : '')

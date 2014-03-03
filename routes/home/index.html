@@ -13,7 +13,7 @@
             <label class="col-sm-3 control-label">Base</label>
 
             <div class="col-sm-7">
-                <input type="text" id="base" name="base" class="form-control"
+                <input type="text" id="url" name="url" class="form-control"
                        placeholder="http://example.cdn.cn/assets" value="http://localhost:8000/"/>
             </div>
         </div>
@@ -21,8 +21,14 @@
             <label class="col-sm-3 control-label">脚本根目录</label>
 
             <div class="col-sm-7">
-                <input type="text" id="root" name="root" class="form-control" value="/Users/xiongsongsong/WebstormProjects/autoMain"/>
+                <input type="text" id="dir" name="dir" class="form-control"
+                       value="/Users/xiongsongsong/WebstormProjects/autoMain/test/home"/>
+                <h4>文件列表</h4>
+                <ul id="file-list">
+
+                </ul>
             </div>
+
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">入口文件</label>
@@ -37,7 +43,7 @@
 <script src="http://assets.spmjs.org/??seajs/seajs/2.1.1/sea.js"></script>
 <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 <script>
-    $('#root,#base').on('input', function (ev) {
+    $('#url,#dir').on('input', function (ev) {
         $.ajax({
             url: '/',
             type: 'get',
@@ -47,6 +53,28 @@
                 }
         )
     })
+
+    var $fileList = $('#file-list')
+    $('#dir').on('input', function (ev) {
+        $.ajax({
+            url: '/?ls=' + this.value,
+            type: 'get'
+        }).done(function (arr) {
+                    if (arr.err) {
+                        $fileList.html('<li>' + JSON.stringify(arr.err) + '</li>')
+                        return
+                    }
+                    $fileList.html(arr.map(function (file) {
+                        if (file.isJS) {
+                            return '<li><a href="' + file.path + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.path + '</a></li>'
+                        } else {
+                            return '<li><a href="' + file.path + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.path + '</a></li>'
+                        }
+
+                    }))
+                })
+    })
+
     $('#root').trigger('input')
 </script>
 </body>
