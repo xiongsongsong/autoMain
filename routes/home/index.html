@@ -66,16 +66,16 @@
                     }
                     $fileList.html(arr.map(function (file) {
                         if (file.isJS) {
-                            return '<li><a href="' + file.path + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.path + '</a></li>'
+                            return '<li><a href="' + file.value + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.value + '</a></li>'
                         } else {
-                            return '<li><a href="' + file.path + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.path + '</a></li>'
+                            return '<li><a href="' + file.value + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.value + '</a></li>'
                         }
 
                     }))
                 })
     })
 
-    $('#root').trigger('input')
+    $('#url,#dir').trigger('input')
 </script>
 </body>
 </html>

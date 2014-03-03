@@ -15,15 +15,6 @@ app.use(function *() {
             return
         }
 
-
-        //ls
-        if (this.query.ls) {
-            this.type = 'json'
-            this.body = yield build.readDir
-            return
-        }
-
-
         if (this.query.dir || this.query.url) {
             global.baseUrl = this.query.url
             global.baseDir = this.query.dir ? this.query.dir : global.__baseDirname
@@ -46,9 +37,18 @@ app.use(function *() {
         this.rootUrl = global.baseUrl
         this.rootProtocol = this.rootUrl.substring(0, this.rootUrl.indexOf('//') + 2)
         this.filePath = path.join(this.dirName, this.fileName)
+
+
         this.filePath = this.filePath + ( path.extname(this.filePath) === '' ? '.js' : '')
         this.mainFilePath = this.filePath
         this.moduleCache = {}
+
+        //ls
+        if (this.query.ls) {
+            this.type = 'json'
+            this.body = yield build.readDir
+            return
+        }
 
         this.body = yield build.start
     }
