@@ -21,9 +21,11 @@
             <label class="col-sm-3 control-label">脚本根目录</label>
 
             <div class="col-sm-7">
+                <!--todo:使用自动完成来选择地址-->
+
                 <input type="text" id="dir" name="dir" class="form-control"
                        value="/Users/xiongsongsong/WebstormProjects/autoMain/test/home"/>
-                <h4>文件列表</h4>
+                <h4 id="__dirname">文件列表</h4>
                 <ul id="file-list">
 
                 </ul>
@@ -56,6 +58,9 @@
 
     var $fileList = $('#file-list')
     $('#dir').on('input', function (ev) {
+        $('#__dirname').html(ev.target.value.split(/\/+/).map(function (key) {
+            return key + '|'
+        }))
         $.ajax({
             url: '/?ls=' + this.value,
             type: 'get'
