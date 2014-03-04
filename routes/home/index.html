@@ -17,6 +17,7 @@
 <body>
 <div class="container">
     <h1>适用于seaJS的自动打包工具</h1>
+
     <p>自动包裹define，请勿手动设置。</p>
 
     <form class="form-horizontal" id="setting" role="form" action="/test/test.do" method="post" data-send-type="ajax">
@@ -24,7 +25,8 @@
             <label class="col-sm-3 control-label">Base</label>
 
             <div class="col-sm-7">
-                <input type="text" id="url" name="url" class="form-control" placeholder="load...."/>
+                <input type="text" id="url" name="url" class="form-control" readonly style="color: #999"
+                       placeholder="load...."/>
             </div>
         </div>
         <div class="form-group">
@@ -40,12 +42,17 @@
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe0eeWk1.js"></script>
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe8jBY5V.js"></script>
 <script>
+    $('#url').val(window.location.origin + '/')
     $('#url,#dir').on('input', function (ev) {
         $.ajax({
             url: '/',
             type: 'get',
             data: $('#setting').serializeArray()
-        })
+        }).done(function () {
+                    seajs.use('http://localhost:8000/main?build', function () {
+
+                    })
+                })
     })
     $('#url,#dir').trigger('input')
 </script>
