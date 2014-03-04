@@ -31,4 +31,6 @@ node run
 * base可配置```（2014年3月中旬前）```
 * 打包CSS以支持seajs-style```（2014年3月）```
 * ?build时增加对应的sourceMap```（2014年3月）```
-* 增加变量白名单，默认包含```require,exports,module```
+* 变量白名单，默认包含```require,exports,module```,```（2014年3月）```
+* require白名单，增加正则配置项```require,exports,module```,```（2014年3月）```
+
