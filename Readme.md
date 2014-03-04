@@ -21,8 +21,10 @@ node run
 ![2014-03-04 10 42 29](https://f.cloud.github.com/assets/342509/2322024/db56f74c-a3ab-11e3-9576-e15ea5e2c3db.png)
 
 自动将所有的依赖进行打包
+
 ![2014-03-04 10 43 06](https://f.cloud.github.com/assets/342509/2322025/de1dab24-a3ab-11e3-9705-17f981b3fc5d.png)
 
 增加build参数后，会调用uglifyjs进行压缩
+
 ![2014-03-04 10 43 27](https://f.cloud.github.com/assets/342509/2322031/e0d6d71e-a3ab-11e3-977d-e1c5189ccb0c.png)
 
