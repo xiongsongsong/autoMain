@@ -16,15 +16,15 @@ node run
 
 在根目录中存放着JS模块，```不要包装define```
 
-![2014-03-04 10 42 29](https://f.cloud.github.com/assets/342509/2322024/db56f74c-a3ab-11e3-9576-e15ea5e2c3db.png)
+![2014-03-04 11 31 07](https://f.cloud.github.com/assets/342509/2322508/0faa0a74-a3b2-11e3-991d-9a7cf102a811.png)
 
 自动将所有的依赖进行打包
 
-![2014-03-04 10 43 06](https://f.cloud.github.com/assets/342509/2322025/de1dab24-a3ab-11e3-9705-17f981b3fc5d.png)
+![2014-03-04 11 30 56](https://f.cloud.github.com/assets/342509/2322510/140f3f1c-a3b2-11e3-9f1a-7764ea660fba.png)
 
 增加build参数后，将使用uglifyjs进行压缩，并在对应目录生成.min.js
 
-![2014-03-04 10 43 27](https://f.cloud.github.com/assets/342509/2322031/e0d6d71e-a3ab-11e3-977d-e1c5189ccb0c.png)
+![2014-03-04 11 31 17](https://f.cloud.github.com/assets/342509/2322511/15e6f29e-a3b2-11e3-8891-d769fcb7fc06.png)
 
 #### TODO
 
