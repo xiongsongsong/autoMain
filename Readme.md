@@ -1,6 +1,6 @@
 ## 适用于seaJS的一款模块打包工具
 
-###尝试
+### 快速尝试
 
 ```bash
 
@@ -10,6 +10,7 @@ cd autoMain
 
 node run
 
-//open url on browser
 
 ```
+
+在```根目录```中，填入assets的路径。然后访问：```http://localhost:8003/you-js-file.js```
