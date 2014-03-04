@@ -37,6 +37,7 @@
             </div>
 
         </div>
+        <sub>没有银弹</sub>
     </form>
 </div>
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe0eeWk1.js"></script>
@@ -48,11 +49,7 @@
             url: '/',
             type: 'get',
             data: $('#setting').serializeArray()
-        }).done(function () {
-                    seajs.use('http://localhost:8000/main?build', function () {
-
-                    })
-                })
+        })
     })
     $('#url,#dir').trigger('input')
 </script>
