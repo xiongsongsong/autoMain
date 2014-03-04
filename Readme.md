@@ -22,7 +22,7 @@ node run
 
 ![2014-03-04 10 43 06](https://f.cloud.github.com/assets/342509/2322025/de1dab24-a3ab-11e3-9705-17f981b3fc5d.png)
 
-增加build参数后，会调用uglifyjs进行压缩，并在对应目录生成.min.js
+增加build参数后，将使用uglifyjs进行压缩，并在对应目录生成.min.js
 
 ![2014-03-04 10 43 27](https://f.cloud.github.com/assets/342509/2322031/e0d6d71e-a3ab-11e3-977d-e1c5189ccb0c.png)
 
@@ -31,3 +31,4 @@ node run
 * base可配置```（2014年3月中旬前）```
 * 打包CSS以支持seajs-style```（2014年3月）```
 * ?build时增加对应的sourceMap```（2014年3月）```
+* 增加变量白名单，默认包含```require,exports,module```
