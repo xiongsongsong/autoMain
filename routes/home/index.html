@@ -2,7 +2,17 @@
 <html>
 <head>
     <title>seaJS自动打包工具</title>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.1.1/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://a.alipayobjects.com/u/css/201403/2CBdFqHlTB.css">
+    <style>
+        body {
+            background: #eee;
+        }
+
+        .container {
+            float: left;
+            width: 800px;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -21,65 +31,23 @@
             <label class="col-sm-3 control-label">脚本根目录</label>
 
             <div class="col-sm-7">
-                <!--todo:使用自动完成来选择地址-->
-
-                <input type="text" id="dir" name="dir" class="form-control"
-                       value="/Users/xiongsongsong/WebstormProjects/autoMain/test/home"/>
-                <h4 id="__dirname">文件列表</h4>
-                <ul id="file-list">
-
-                </ul>
+                <input type="text" id="dir" name="dir" class="form-control" placeholder="请填写目录地址"/>
             </div>
 
-        </div>
-        <div class="form-group">
-            <label class="col-sm-3 control-label">入口文件</label>
-
-            <div class="col-sm-7">
-                <textarea class="form-control" id="output" placeholder="拷贝此处代码"></textarea>
-            </div>
         </div>
     </form>
     <sub>请使用IE9或其他浏览器及其以上访问本页面</sub>
 </div>
-<script src="http://assets.spmjs.org/??seajs/seajs/2.1.1/sea.js"></script>
-<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://a.alipayobjects.com/u/js/201403/2CBe0eeWk1.js"></script>
+<script src="https://a.alipayobjects.com/u/js/201403/2CBe8jBY5V.js"></script>
 <script>
     $('#url,#dir').on('input', function (ev) {
         $.ajax({
             url: '/',
             type: 'get',
             data: $('#setting').serializeArray()
-        }).done(function (url) {
-                    $('#output').val(JSON.stringify(url))
-                }
-        )
+        })
     })
-
-    var $fileList = $('#file-list')
-    $('#dir').on('input', function (ev) {
-        $('#__dirname').html(ev.target.value.split(/\/+/).map(function (key) {
-            return key + '|'
-        }))
-        $.ajax({
-            url: '/?ls=' + this.value,
-            type: 'get'
-        }).done(function (arr) {
-                    if (arr.err) {
-                        $fileList.html('<li>' + JSON.stringify(arr.err) + '</li>')
-                        return
-                    }
-                    $fileList.html(arr.map(function (file) {
-                        if (file.isJS) {
-                            return '<li><a href="' + file.value + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.value + '</a></li>'
-                        } else {
-                            return '<li><a href="' + file.value + '" class="J-' + (file.isJS ? 'js' : 'dir') + '">' + file.value + '</a></li>'
-                        }
-
-                    }))
-                })
-    })
-
     $('#url,#dir').trigger('input')
 </script>
 </body>
