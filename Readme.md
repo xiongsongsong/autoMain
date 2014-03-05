@@ -14,7 +14,7 @@ node run
 
 ![2014-03-04 10 42 22](https://f.cloud.github.com/assets/342509/2322022/d552c268-a3ab-11e3-8eaa-4821f8823570.png)
 
-在根目录中存放着JS模块，```不要包装define```。
+在根目录中存放着JS模块。
 
 ![2014-03-04 11 31 07](https://f.cloud.github.com/assets/342509/2322508/0faa0a74-a3b2-11e3-991d-9a7cf102a811.png)
 
