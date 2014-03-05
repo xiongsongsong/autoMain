@@ -20,7 +20,7 @@
             <label class="col-sm-3 control-label">Base</label>
 
             <div class="col-sm-7">
-                <input type="text" id="url" name="url" class="form-control" />
+                <input type="text" id="url" name="url" class="form-control"/>
             </div>
         </div>
         <div class="form-group">
@@ -37,16 +37,26 @@
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe0eeWk1.js"></script>
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe8jBY5V.js"></script>
 <script>
-    $('#url').val(window.location.origin)
-    $('#url,#dir').on('input', function (ev) {
+
+    var $url = $('#url')
+    var $dir = $('#dir')
+
+    if (localStorage) {
+        $url.val(localStorage.url ? localStorage.url : location.origin)
+        if (localStorage.dir) $dir.val(localStorage.dir)
+    } else {
+        $url.val(location.origin)
+    }
+
+    $dir.add($url).on('input',function (ev) {
+        localStorage.base = $dir.val()
+        localStorage.dir = $dir.val()
         $.ajax({
             url: '/',
             type: 'get',
             data: $('#setting').serializeArray()
         })
-    })
-
-    $('#url,#dir').trigger('input')
+    }).trigger('input')
 </script>
 </body>
 </html>
