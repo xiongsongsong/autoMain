@@ -15,7 +15,7 @@ app.use(function *() {
         }
 
         if (this.query.dir || this.query.url) {
-            global.baseUrl = this.query.url
+            global.baseUrl = this.query.url.replace(/(\/|\\)+$/g, '')
             global.baseDir = this.query.dir ? this.query.dir : global.__baseDirname
 
             if (isAjax) {
