@@ -28,6 +28,7 @@ node run
 
 #### TODO
 
+* 增加测试用例。
 * base可配置。
 * 打包CSS以支持seajs-style 。
 * ?build时增加对应的sourceMap。
