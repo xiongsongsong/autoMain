@@ -34,3 +34,7 @@ node run
 * ?build时增加对应的sourceMap。
 * 变量白名单，默认包含```require,exports,module```。
 * require白名单，增加正则配置项。
+
+#### 历史
+ * 2014-03-05 兼容define
+
