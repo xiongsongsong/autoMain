@@ -12,7 +12,7 @@ node run
 
 目前唯一的配置项，填写JS模块的根目录：
 
-![2014-03-04 10 42 22](https://f.cloud.github.com/assets/342509/2322022/d552c268-a3ab-11e3-8eaa-4821f8823570.png)
+![2014-03-05 10 55 32](https://f.cloud.github.com/assets/342509/2334218/4a762416-a476-11e3-8c73-ad4db1459675.png)
 
 在根目录中存放着JS模块。
 
