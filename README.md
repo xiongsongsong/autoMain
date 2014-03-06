@@ -36,5 +36,11 @@ node run
 * require白名单，增加正则配置项。
 
 #### 历史
- * 2014-03-05 兼容define
+
+##### 2014-03-05
+ * 兼容define
+
+##### 2014-03-06
+ * 支持alias和vars配置
+ * seaJS.use(id)和返回时的id一致
 
