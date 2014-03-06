@@ -31,6 +31,17 @@
             </div>
 
         </div>
+        <h2>seaJS.<a href="https://github.com/seajs/seajs/issues/262">config</a></h2>
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                <p>vars</p>
+            </div>
+
+            <div class="col-sm-7">
+                <textarea id="vars" name="vars" class="form-control" placeholder="locals=zh-cn,ts=20140306"></textarea>
+            </div>
+
+        </div>
         <sub>没有银弹</sub>
     </form>
 </div>
@@ -40,17 +51,20 @@
 
     var $url = $('#url')
     var $dir = $('#dir')
+    var $vars = $('#vars')
 
     if (localStorage) {
         $url.val(localStorage.url ? localStorage.url : location.origin)
         if (localStorage.dir) $dir.val(localStorage.dir)
+        if (localStorage.vars) $vars.val(localStorage.vars)
     } else {
         $url.val(location.origin)
     }
 
-    $dir.add($url).on('input',function (ev) {
+    $dir.add($url).add($vars).on('input',function (ev) {
         localStorage.base = $dir.val()
         localStorage.dir = $dir.val()
+        localStorage.vars = $vars.val()
         $.ajax({
             url: '/',
             type: 'get',
