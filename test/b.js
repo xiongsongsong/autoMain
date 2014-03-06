@@ -3,4 +3,5 @@ define(function (require, exports, module) {
     require('./body/index')
     require('./foot/index')
     require('./head/index')
+    require('./a')
 })
