@@ -14,6 +14,17 @@ app.use(function *() {
             return
         }
 
+        //vars
+        if (this.query.vars) {
+            global.baseVars = {}
+            this.query.vars.split(/[,，]/).forEach(function (key) {
+                key = key.split('=')
+                if (key.length === 2) {
+                    global.baseVars[key[0].trim()] = key[1].trim()
+                }
+            })
+        }
+
         if (this.query.dir || this.query.url) {
             global.baseUrl = this.query.url.replace(/(\/|\\)+$/g, '')
             global.baseDir = this.query.dir ? this.query.dir : global.__baseDirname
