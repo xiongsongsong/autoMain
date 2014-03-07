@@ -23,6 +23,10 @@ seajs.use('http://localhost:8003/init',function(obj){
 
 如果需要访问压缩的版本，请use```http://localhost:8003/init?build```
 
+#### Bugs
+
+* JS文件语法错误时，会引起应用崩溃 ```2014-03-07```。
+
 #### TODO
 
 * 增加开关，以保证始终基于Base进行打包。
