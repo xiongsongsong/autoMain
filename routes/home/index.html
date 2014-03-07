@@ -76,7 +76,7 @@
     }
 
     $dir.add($url).add($vars).add($alias).on('input',function (ev) {
-        localStorage.base = $dir.val()
+        localStorage.base = $url.val()
         localStorage.dir = $dir.val()
         localStorage.vars = $vars.val()
         localStorage.alias = $alias.val()
