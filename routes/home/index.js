@@ -23,8 +23,6 @@ app.use(function *() {
                     global.baseAlias[key[0].trim()] = key[1].trim()
                 }
             })
-        } else {
-            global.baseAlias = {}
         }
 
         //vars
