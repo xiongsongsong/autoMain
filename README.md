@@ -23,6 +23,8 @@ seajs.use('http://localhost:8003/init',function(obj){
 
 如果需要访问压缩的版本，请use```http://localhost:8003/init?build```
 
+当前仅支持seajs.config中```vars```和```paths```。
+
 #### TODO
 
 * 增加开关，以保证始终基于Base进行打包。
