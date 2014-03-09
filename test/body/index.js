@@ -1,4 +1,5 @@
 console.log(module.id)
 require('./../{locals}/s')
 require('$')
+console.log('jQuery test', jQuery('body'))
 require('./a/init')
