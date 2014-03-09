@@ -1,1 +1,1 @@
-console.log('chinese')
+console.log(module.id)
