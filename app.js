@@ -12,4 +12,4 @@ exports.app.listen(port);
 var exec = require('child_process').exec
 var OS = require('os')
 
-exec((OS.type().toLowerCase().indexOf('windows') > -1 ? 'start' : 'open') + ' http://localhost:' + port)
+///exec((OS.type().toLowerCase().indexOf('windows') > -1 ? 'start' : 'open') + ' http://localhost:' + port)
