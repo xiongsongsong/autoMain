@@ -1,15 +1,23 @@
-var port = 8003
+var fs = require('fs')
+var path = require('path')
 
-var koa = require('koa');
-exports.app = koa();
+var https = require('https')
+var koa = require('koa')
+
+exports.app = koa()
 global.__baseDirname = __dirname
 
 require('./routes')
+var path = require('path')
 
-exports.app.listen(port);
+
+https.createServer({
+    key: fs.readFileSync(path.join(__dirname, 'server-key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'server-cert.pem'))
+}, exports.app.callback()).listen(443)
 
 
 var exec = require('child_process').exec
-var OS = require('os')
+//var OS = require('os')
 
-exec((OS.type().toLowerCase().indexOf('windows') > -1 ? 'start' : 'open') + ' http://localhost:' + port)
+///exec((OS.type().toLowerCase().indexOf('windows') > -1 ? 'start' : 'open') + ' http://localhost:' + port)
