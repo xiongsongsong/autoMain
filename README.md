@@ -31,6 +31,7 @@ seajs.use('http://localhost:8003/init',function(obj){
 * 打包CSS以支持seajs-style 。
 * ?build时增加对应的sourceMap。
 * 变量白名单，默认包含```require,exports,module```。
+* 支持HTTPS
 
 #### 历史
 
