@@ -5,6 +5,11 @@ var fs = require('fs')
 
 app.use(function *() {
 
+        //列出目录或文件
+        if (yield require('./readDir')) {
+            return
+        }
+
         var isAjax = this.header['x-requested-with'] !== undefined
 
         //check home page

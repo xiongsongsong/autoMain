@@ -50,7 +50,8 @@
             </div>
 
             <div class="col-sm-7">
-                <textarea id="alias" name="alias" class="form-control" placeholder="$ = http://xxx.cn/jquery/jquery/x.10.x/jquery"></textarea>
+                <textarea id="alias" name="alias" class="form-control"
+                          placeholder="$ = http://xxx.cn/jquery/jquery/x.10.x/jquery"></textarea>
             </div>
 
         </div>
@@ -75,7 +76,7 @@
         $url.val(location.origin)
     }
 
-    $dir.add($url).add($vars).add($alias).on('input',function (ev) {
+    $dir.add($url).add($vars).add($alias).on('input', function (ev) {
         localStorage.url = $url.val()
         localStorage.dir = $dir.val()
         localStorage.vars = $vars.val()
@@ -83,7 +84,10 @@
         $.ajax({
             url: '/',
             type: 'get',
-            data: $('#setting').serializeArray()
+            data: $('#setting').serializeArray(),
+            success: function (data) {
+                console.log(data)
+            }
         })
     }).trigger('input')
 </script>
