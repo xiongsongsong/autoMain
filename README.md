@@ -14,9 +14,17 @@ node run
 
 假设在```根目录```中存在init.js，则：
 
+
 ```javascript
-seajs.use('http://localhost:8003/init',function(obj){
-    console.log(obj);
+
+//入口文件init.js
+define('mainModule',function(){
+   require('other-module')
+})
+
+//在页面调用
+seajs.use('http://localhost:8003/init',function(){
+    seajs.use('mainModule')
 })
 
 ```
