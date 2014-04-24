@@ -1,13 +1,12 @@
 var app = require('app')
 var path = require('path')
-var build = require('build')
+var build = require('./build')
 var fs = require('fs')
 
 app.use(function *() {
 
         //列出目录或文件
         if (yield require('./readDir')) {
-            return
         }
 
         var isAjax = this.header['x-requested-with'] !== undefined
