@@ -6,7 +6,8 @@ var fs = require('fs')
 app.use(function *() {
 
         //列出目录或文件
-        if (yield require('./readDir')) {
+        if (yield require('./read')) {
+            return
         }
 
         var isAjax = this.header['x-requested-with'] !== undefined
