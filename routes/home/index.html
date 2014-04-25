@@ -7,6 +7,22 @@
         body {
             background: #eee;
         }
+
+        #file .item {
+            display: inline-block;
+            padding: 12px;
+        }
+
+        #file a {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #file .dir-circle a:after {
+            content: '>';
+            margin-right: 1em;
+        }
     </style>
 </head>
 <body>
@@ -48,18 +64,30 @@
             <div class="col-sm-3 control-label">
                 <p>alias，建议用绝对路径<br>多个请换行</p>
             </div>
-
             <div class="col-sm-7">
                 <textarea id="alias" name="alias" class="form-control"
                           placeholder="$ = http://xxx.cn/jquery/jquery/x.10.x/jquery"></textarea>
             </div>
-
         </div>
         <sub>没有银弹</sub>
+
+        <h2>文件列表</h2>
+
+        <div id="file-list">
+            <div>文件路径：<a href="javascript:void(0)" class="J-dir-circle" data-dir="/">返回根目录</a>：<span
+                    class="dir-circle J-path"></span></div>
+
+            <div id="file">
+
+            </div>
+        </div>
     </form>
 </div>
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe0eeWk1.js"></script>
 <script src="https://a.alipayobjects.com/u/js/201403/2CBe8jBY5V.js"></script>
+<style>
+
+</style>
 <script>
 
     var $url = $('#url')
@@ -85,11 +113,52 @@
             url: '/',
             type: 'get',
             data: $('#setting').serializeArray(),
-            success: function (data) {
-                console.log(data)
+            success: function () {
+                getDir()
             }
         })
-    }).trigger('input')
+    }).eq(0).trigger('input')
+
+    //读取目录下的所有文件
+    var dirCircle = ''
+    function getDir(path) {
+        $.get('/readir' + (path ? path : '')).done(function (data) {
+            var str = data.list.map(function (file) {
+                if (file.isFile && /.js$/.test(file.name)) {
+                    return '<div class="item J-file"><a>' + file.name + '</a></div>'
+                } else if (file.isDirectory && !/^\./.test(file.name)) {
+                    return '<div class="item J-directory" data-dir="' + file.name + '"><a>' + file.name + '</a></div>'
+                }
+            })
+            $('#file').html(str)
+            //处理面包屑
+            dirCircle = data.base
+            $('.J-path').html(data.base.split('\\').map(function (item) {
+                return '<a data-dir="' + item + '" class="J-dir-circle">' + item + '</a>'
+            }))
+        })
+    }
+
+    //目录
+    $(document).on('click', '.J-directory', function () {
+        getDir(dirCircle + '/' + $(this).data('dir'))
+    })
+
+    //面包屑
+    $(document).on('click', '.J-dir-circle', function () {
+        var path = []
+        $(this).prevAll().add(this).map(function (i, item) {
+            path.push($(item).data('dir'))
+        })
+        if (path.length < 1) {
+            return
+        }
+        getDir(path.reverse().join('/'))
+    })
+
+</script>
+<!--显示目录-->
+<script>
 </script>
 </body>
 </html>
