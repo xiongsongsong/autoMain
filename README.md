@@ -1,6 +1,8 @@
 ## 适用于seaJS的一款简易打包工具
 
-特色之一：模块定义和Node一致，编译时能自动包裹define。
+autoMain能自动包裹define，获取依赖并进行压缩，达到NodeJS一般的体验。
+
+注意：百度的[Mod](http://fex.baidu.com/blog/2014/04/fis-modjs-requirejs-seajs/)也是个不错的选择，推荐。
 
 ### 快速尝试
 
